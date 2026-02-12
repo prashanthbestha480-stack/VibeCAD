@@ -194,48 +194,66 @@ const CADViewer3D = ({ design }) => {
     scene.add(mesh);
     meshRef.current = mesh;
 
-    // Mouse controls
-    let mouseDown = false;
-    let mouseX = 0;
-    let mouseY = 0;
+    // Mouse controls - Fixed for proper rotation
+    const mouseState = {
+      isDown: false,
+      lastX: 0,
+      lastY: 0
+    };
 
     const onMouseDown = (event) => {
-      mouseDown = true;
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+      mouseState.isDown = true;
+      mouseState.lastX = event.clientX;
+      mouseState.lastY = event.clientY;
       setIsRotating(false);
+      renderer.domElement.style.cursor = 'grabbing';
     };
 
     const onMouseMove = (event) => {
-      if (!mouseDown) return;
+      if (!mouseState.isDown) return;
       
-      const deltaX = event.clientX - mouseX;
-      const deltaY = event.clientY - mouseY;
+      const deltaX = event.clientX - mouseState.lastX;
+      const deltaY = event.clientY - mouseState.lastY;
       
       if (meshRef.current) {
+        // Rotate around Y axis (left-right drag)
         meshRef.current.rotation.y += deltaX * 0.01;
+        // Rotate around X axis (up-down drag)
         meshRef.current.rotation.x += deltaY * 0.01;
+        
+        // Limit X rotation to avoid flipping
+        meshRef.current.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, meshRef.current.rotation.x));
       }
       
-      mouseX = event.clientX;
-      mouseY = event.clientY;
+      mouseState.lastX = event.clientX;
+      mouseState.lastY = event.clientY;
     };
 
     const onMouseUp = () => {
-      mouseDown = false;
+      mouseState.isDown = false;
+      renderer.domElement.style.cursor = 'grab';
+    };
+
+    const onMouseLeave = () => {
+      mouseState.isDown = false;
+      renderer.domElement.style.cursor = 'grab';
     };
 
     const onWheel = (event) => {
       event.preventDefault();
-      const delta = event.deltaY * 0.001;
+      const delta = event.deltaY * 0.005;
       camera.position.z += delta;
       camera.position.z = Math.max(2, Math.min(10, camera.position.z));
     };
 
+    // Set initial cursor
+    renderer.domElement.style.cursor = 'grab';
+
     renderer.domElement.addEventListener('mousedown', onMouseDown);
     renderer.domElement.addEventListener('mousemove', onMouseMove);
     renderer.domElement.addEventListener('mouseup', onMouseUp);
-    renderer.domElement.addEventListener('wheel', onWheel);
+    renderer.domElement.addEventListener('mouseleave', onMouseLeave);
+    renderer.domElement.addEventListener('wheel', onWheel, { passive: false });
 
     // Animation loop
     const animate = () => {
