@@ -34,7 +34,7 @@ const CADViewer3D = ({ design }) => {
       0.1,
       1000
     );
-    camera.position.set(3, 3, 5);
+    camera.position.set(2, 2, 4);
     camera.lookAt(0, 0, 0);
     cameraRef.current = camera;
 
