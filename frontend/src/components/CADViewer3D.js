@@ -396,9 +396,17 @@ const CADViewer3D = ({ design }) => {
         {/* 3D Canvas */}
         <div 
           ref={mountRef} 
-          className="w-full h-[500px] rounded-lg overflow-hidden border-2 border-slate-700 cursor-grab active:cursor-grabbing"
+          className="w-full h-[500px] rounded-lg overflow-hidden border-2 border-purple-500 cursor-grab active:cursor-grabbing relative"
           style={{ touchAction: 'none' }}
-        />
+        >
+          {/* Interactive indicator overlay */}
+          <div className="absolute top-4 left-4 z-10 bg-purple-900/90 text-purple-200 px-4 py-2 rounded-lg border border-purple-500 animate-pulse">
+            <div className="flex items-center space-x-2">
+              <RotateCw className="w-4 h-4 animate-spin" />
+              <span className="text-sm font-semibold">🎮 Interactive 3D - Drag to Rotate!</span>
+            </div>
+          </div>
+        </div>
         
         {/* Controls */}
         <div className="mt-4 flex items-center justify-between">
