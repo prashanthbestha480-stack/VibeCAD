@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Cube, Box, Cylinder as CylinderIcon, Settings, Layers } from 'lucide-react';
+import { Package, Settings, Layers } from 'lucide-react';
 
 const GearIcon = () => (
   <svg width="192" height="192" viewBox="0 0 100 100" className="text-purple-400" fill="currentColor">
