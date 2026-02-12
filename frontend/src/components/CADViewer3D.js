@@ -76,6 +76,7 @@ const CADViewer3D = ({ design }) => {
       const height = (geometry.height || 50) / 100;
       const cylinderGeometry = new THREE.CylinderGeometry(radius, radius, height, 32);
       mesh = new THREE.Mesh(cylinderGeometry, purpleMaterial);
+      mesh.scale.set(2, 2, 2); // Scale up for better visibility
     } else if (type === 'gear') {
       // Create gear shape
       const module = geometry.module || 1.0;
