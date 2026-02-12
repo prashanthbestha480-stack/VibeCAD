@@ -341,7 +341,7 @@ const CADViewer3D = ({ design }) => {
 
   const handleReset = () => {
     if (cameraRef.current) {
-      cameraRef.current.position.set(3, 3, 5);
+      cameraRef.current.position.set(2, 2, 4);
       cameraRef.current.lookAt(0, 0, 0);
     }
     if (meshRef.current) {
