@@ -235,7 +235,7 @@ const CADViewer = ({ design }) => {
         <div className="mt-6 grid grid-cols-2 gap-4">
           <div className="p-4 bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors">
             <div className="flex items-center text-sm text-gray-400 mb-1">
-              <Box className="w-4 h-4 mr-2" />
+              <Package className="w-4 h-4 mr-2" />
               Dimensions
             </div>
             <div className="text-white font-semibold">
@@ -245,7 +245,7 @@ const CADViewer = ({ design }) => {
           
           <div className="p-4 bg-slate-900 rounded-lg hover:bg-slate-800 transition-colors">
             <div className="flex items-center text-sm text-gray-400 mb-1">
-              <Cube className="w-4 h-4 mr-2" />
+              <Package className="w-4 h-4 mr-2" />
               Volume
             </div>
             <div className="text-white font-semibold">
