@@ -182,7 +182,7 @@ const CADViewer3D = ({ design }) => {
       }
       
       mesh = group;
-      mesh.scale.set(1.5, 1.5, 1.5); // Scale up brackets for better visibility
+      mesh.scale.set(3, 3, 3); // Much larger scale for brackets
     } else {
       // Default box
       const length = (geometry.base_length || geometry.length || 100) / 100;
