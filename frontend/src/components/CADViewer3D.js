@@ -133,7 +133,7 @@ const CADViewer3D = ({ design }) => {
       const gearGeometry = new THREE.ExtrudeGeometry(gearShape, extrudeSettings);
       mesh = new THREE.Mesh(gearGeometry, purpleMaterial);
       mesh.rotation.x = Math.PI / 2;
-      mesh.scale.set(3, 3, 3); // Scale up gears for better visibility
+      mesh.scale.set(6, 6, 6); // Much larger scale for clear teeth visibility
       
       // Add center bore if specified
       if (geometry.bore_diameter) {
