@@ -46,17 +46,21 @@ const CADViewer3D = ({ design }) => {
     mountRef.current.appendChild(renderer.domElement);
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
     scene.add(ambientLight);
 
-    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight1 = new THREE.DirectionalLight(0xffffff, 1.2);
     directionalLight1.position.set(5, 5, 5);
     directionalLight1.castShadow = true;
     scene.add(directionalLight1);
 
-    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.4);
+    const directionalLight2 = new THREE.DirectionalLight(0xffffff, 0.6);
     directionalLight2.position.set(-5, 3, -5);
     scene.add(directionalLight2);
+    
+    const directionalLight3 = new THREE.DirectionalLight(0xa855f7, 0.4);
+    directionalLight3.position.set(0, -3, 0);
+    scene.add(directionalLight3);
 
     // Grid helper
     const gridHelper = new THREE.GridHelper(10, 20, 0x4b5563, 0x374151);
