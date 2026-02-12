@@ -7,7 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Progress } from '@/components/ui/progress';
-import CADViewer from '@/components/CADViewer';
+import CADViewer3D from '@/components/CADViewer3D';
 import DFMReport from '@/components/DFMReport';
 import CostEstimate from '@/components/CostEstimate';
 import ComponentLibrary from '@/components/ComponentLibrary';
