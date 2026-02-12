@@ -315,7 +315,7 @@ const DesignStudio = ({ onBackToHome }) => {
             {currentDesign ? (
               <div className="grid lg:grid-cols-3 gap-6">
                 <div className="lg:col-span-2">
-                  <CADViewer design={currentDesign} />
+                  <CADViewer3D design={currentDesign} />
                 </div>
                 
                 <div className="space-y-4">
