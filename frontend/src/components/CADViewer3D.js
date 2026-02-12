@@ -318,6 +318,8 @@ const CADViewer3D = ({ design }) => {
       renderer.domElement.removeEventListener('mouseup', onMouseUp);
       renderer.domElement.removeEventListener('mouseleave', onMouseLeave);
       renderer.domElement.removeEventListener('wheel', onWheel);
+      renderer.domElement.removeEventListener('touchstart', onTouchStart);
+      renderer.domElement.removeEventListener('touchmove', onTouchMove);
       if (mountRef.current && renderer.domElement) {
         mountRef.current.removeChild(renderer.domElement);
       }
