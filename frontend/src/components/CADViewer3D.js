@@ -255,6 +255,38 @@ const CADViewer3D = ({ design }) => {
     renderer.domElement.addEventListener('mouseleave', onMouseLeave);
     renderer.domElement.addEventListener('wheel', onWheel, { passive: false });
 
+    // Touch controls for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    const onTouchStart = (event) => {
+      if (event.touches.length === 1) {
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+        setIsRotating(false);
+      }
+    };
+
+    const onTouchMove = (event) => {
+      if (event.touches.length === 1) {
+        event.preventDefault();
+        const deltaX = event.touches[0].clientX - touchStartX;
+        const deltaY = event.touches[0].clientY - touchStartY;
+        
+        if (meshRef.current) {
+          meshRef.current.rotation.y += deltaX * 0.01;
+          meshRef.current.rotation.x += deltaY * 0.01;
+          meshRef.current.rotation.x = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, meshRef.current.rotation.x));
+        }
+        
+        touchStartX = event.touches[0].clientX;
+        touchStartY = event.touches[0].clientY;
+      }
+    };
+
+    renderer.domElement.addEventListener('touchstart', onTouchStart);
+    renderer.domElement.addEventListener('touchmove', onTouchMove, { passive: false });
+
     // Animation loop
     const animate = () => {
       requestAnimationFrame(animate);
