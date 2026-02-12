@@ -190,6 +190,7 @@ const CADViewer3D = ({ design }) => {
       const height = (geometry.height || 50) / 100;
       const boxGeometry = new THREE.BoxGeometry(length, height, width);
       mesh = new THREE.Mesh(boxGeometry, purpleMaterial);
+      mesh.scale.set(1.5, 1.5, 1.5); // Scale up boxes for better visibility
     }
 
     mesh.castShadow = true;
